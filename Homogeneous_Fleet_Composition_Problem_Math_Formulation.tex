@@ -1,0 +1,151 @@
+\documentclass[a4paper,12pt,titlepage]{article}
+\usepackage[utf8]{inputenc} 
+\usepackage{tikz,pgf}
+\usepackage{indentfirst}
+\usepackage{amsfonts}
+%\usepackage[english]{babel}
+\usepackage[italian]{babel} %% Abbiamo istruito LaTeX ad usare la lingua italiana 
+
+%Link url e Barra navigazione del PDF in output
+\usepackage{hyperref}
+\hypersetup{
+	colorlinks=true,
+	linkcolor=blue,
+	filecolor=magenta,      
+	urlcolor=cyan,
+%	pdftitle={Business Plan_DIEGO_FABBRI_215100},
+	bookmarks=true,
+	%pdfpagemode=FullScreen,
+}
+%Per inserire file PDF
+\usepackage[final]{pdfpages}
+
+%Per ripartire i  più file i capitoli
+\usepackage{standalone}
+%ROTAZIONE
+\usepackage{rotating}
+
+\usepackage{tabularx}
+\usepackage{multirow} 
+\usepackage{lscape}
+\usepackage{tikz}
+
+%--Packages--
+
+\usepackage{eurosym}
+\usepackage{graphicx} \usepackage{verbatim}
+\usepackage{graphics}
+\usepackage{tikz,pgf}
+\usepackage{indentfirst}
+\usepackage{amsfonts}
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amsmath,amssymb,amsthm,textcomp}
+\usepackage{enumerate}
+\usepackage{multicol}
+\usepackage{tikz}
+\usepackage{geometry}
+\usepackage{mathtools}
+\usepackage{amsmath}
+\usepackage{verbatim}
+\usepackage{amsmath,amssymb,mathrsfs}
+\usepackage{xcolor}
+\usepackage{graphicx,color,listings}
+\frenchspacing 
+\usepackage{geometry}
+\usepackage{rotating}
+\usepackage{caption}
+\usepackage{xcolor}
+\usepackage{listings}
+%Cool maths printing
+\usepackage{amsmath}
+%PseudoCode
+\usepackage{algorithm2e}
+
+
+
+%INIZIO DOCUMENTO
+
+\begin{document}
+\section*{Homogeneous Fleet Composition}
+\subsection*{Parameters}
+\begin{flushleft}
+- $n$ = time horizon's number of periods;\\
+- $v$ = number of owned vehicles;\\
+- $v_t$ = required number of vehicles at time $t$;\,\,\, $t=1,\cdots,n$\\
+- $c_F$ = fixed cost per time period of an owned vehicle;\\
+- $c_V$ = variable cost per time period of an owned vehicle;\\
+- $c_H$ = cost per time period of hiring a vehicle such that $c_F+c_V<c_H$;
+\end{flushleft}
+\subsection*{Variables}
+$$x_t=
+\bigg \{
+\begin{array}{ll}
+1\quad \text{if}\quad v_t\leq v\\
+0\quad \text{if}\quad v_t>v \\
+\end{array}
+$$
+\\
+$$y_t = v \cdot x_t =
+\bigg \{
+\begin{array}{ll}
+v\quad \text{if}\quad x_t=1\\
+0\quad \text{if}\quad x_t=0 \\
+\end{array}
+$$
+\subsection*{Model}
+\begin{equation}
+min\,\, n\cdot c_F\cdot v + c_V\cdot\left( \sum_{t=1}^{n}v_tx_t + \sum_{t=1}^{n}v(1-x_t)\right)  + c_H\cdot\left( \sum_{t=1}^{n}(v_t - v)(1-x_t)\right) 
+\tag{1}
+\end{equation}
+\begin{center}
+	s.v
+\end{center}
+\begin{equation}
+v\geq v_t-\overline{v}\cdot(1-x_t)\qquad\qquad t=1,\cdots,n
+\tag{2}
+\end{equation}
+\begin{equation}
+v\leq v_t+\overline{v}\cdot x_t\qquad\qquad t=1,\cdots,n
+\tag{3}
+\end{equation}
+\begin{equation}
+v \in\left\lbrace  0,\cdots,\overline{v}\right\rbrace
+\tag{4}
+\end{equation}
+\begin{equation}
+x_t \in \left\lbrace 0,1\right\rbrace \qquad\qquad t=1,\cdots,n
+\tag{5}
+\end{equation}
+\begin{equation}
+y_t \leq v\qquad\qquad\qquad t=1,\cdots,n
+\tag{6}
+\end{equation}
+\begin{equation}
+y_t \leq\overline{v}\cdot x_t\qquad\qquad\quad  t=1,\cdots,n
+\tag{7}
+\end{equation}
+\begin{equation}
+y_t \geq v- \overline{v}\cdot(1- x_t)\quad t=1,\cdots,n
+\tag{8}
+\end{equation}
+\begin{equation}
+y_t \in \left\lbrace 0,\cdots,\overline{v}\right\rbrace \quad\qquad t=1,\cdots,n
+\tag{9}
+\end{equation}
+\\
+\begin{center}
+\textbf{Objective function:}	
+\end{center}
+ 
+\begin{equation}
+min\,\, n\cdot c_F\cdot v + c_V\cdot\left[ \sum_{t=1}^{n}(v_tx_t) + \sum_{t=1}^{n}(v- y_t)\right]  + c_H\cdot\left( \sum_{t=1}^{n}v_t - v_t\cdot x_t -v + y_t\right)
+\tag{10}
+\end{equation}
+\\
+\begin{equation}
+min\,\, n\cdot c_F\cdot v + c_V\cdot\left[ \sum_{t=1}^{n}(v_tx_t) + (nv) - \sum^n_{t = 1}y_t\right]  + c_H\cdot\left[ \sum^n_{t = 1}v_t - \sum^n_{t = 1}(v_tx_t) - (nv) + \sum^n_{t = 1}y_t\right]
+\tag{11}
+\end{equation}
+	
+\end{document}
