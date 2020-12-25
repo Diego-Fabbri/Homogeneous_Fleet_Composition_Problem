@@ -13,8 +13,7 @@ public class Main {
     public static void main (String[] args) throws IloException, FileNotFoundException {
       
             System.setOut(new PrintStream("Homogeneous Fleet Composition Problem.log"));// questo comando permette di stampare in output i risultati su un file.log
-            //Il file deve essere mecritto in arguments
-            //clicca sul nome progetto, tasto destro, Proprierties, RUN, Arguments, in prima posizione (posizione 0)c'è il nome del file in output
+            
             
       
                                                         // WARNING: insert your own path file
